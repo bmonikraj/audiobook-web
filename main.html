@@ -90,21 +90,76 @@
             <ul>
                 <li><a href="main">HOME</a></li>
                 <li><a href="library">LIBRARY</a></li>
-                <li><a href="#">DISCUSSION FORUM</a></li>
-                <li><a href="#">ORDERS</a></li>
-                <li><a href="#">BOOKMARK</a></li>
-                <li><a href="#">MY ACCOUNT</a></li>
-                <li><a href="#">ABOUT US</a></li>
-                <li><a href="#">CONTACT US</a></li>
+                <li><a href="discussion">DISCUSSION FORUM</a></li>
+                <li><a href="orders">ORDERS</a></li>
+                <li><a href="bookmark">BOOKMARK</a></li>
+                <li><a href="account">MY ACCOUNT</a></li>
+                <li><a href="about">ABOUT US</a></li>
+                <li><a href="contact">CONTACT US</a></li>
             </ul>
         </nav>
 
         <div class="container-fluid">
-            <div>
-
+            <div class="row">
+                <div class="col-10 px-0">
+                    <div class="form-group">
+                        <input type="text" placeholder="Search" class="form-control" id="search-input">
+                    </div>
+                </div>
+                <div class="col-2 px-0">
+                    <button type="button" class="form-control btn btn-info" id="search-btn"><i class="fa fa-search"></i></button>
+                </div>
+                <hr>
+                <div class="col-12 text-center" style="padding:4em; box-shadow: 5px 5px 5px grey;" data-toggle="modal" data-target="#recentModal">
+                    <h1>Recent Uploads</h1>
+                </div>
+                <div class="col-12 text-center" onclick="libraryOpen()" style="padding:4em; box-shadow: 5px 5px 5px grey;">
+                    <h1>Library</h1>
+                </div>
+                <div class="col-12 text-center" onclick="discussionOpen()" style="padding:4em; box-shadow: 5px 5px 5px grey;">
+                    <h1>Discussion Forum</h1>
+                </div>
             </div>
         </div>
 
+
+
+
+        <!-- The Recent Uploads Modal -->
+        <div class="modal fade" id="recentModal" data-backdrop="false">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Recent Uploads</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="list-group">
+                                        <a href="#" class="list-group-item list-group-item-action">First item</a>
+                                        <a href="#" class="list-group-item list-group-item-action">Second item</a>
+                                        <a href="#" class="list-group-item list-group-item-action">Third item</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -130,6 +185,14 @@
                 animation: "collapse"
             }
         });
+
+        function libraryOpen() {
+            window.location = "library";
+        }
+
+        function discussionOpen() {
+            window.location = "discussion";
+        }
 
         $(".mm-navbar__title").html("Hello Monik");
     </script>
