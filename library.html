@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Main</title>
+    <title>Library</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -100,66 +100,9 @@
         </nav>
 
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-10 px-0">
-                    <div class="form-group">
-                        <input type="text" placeholder="Search" class="form-control" id="search-input">
-                    </div>
-                </div>
-                <div class="col-2 px-0">
-                    <button type="button" class="form-control btn btn-info" id="search-btn"><i class="fa fa-search"></i></button>
-                </div>
-                <hr>
-                <div class="col-12 text-center" style="padding:7vh; box-shadow: 5px 5px 5px grey;" data-toggle="modal" data-target="#recentModal">
-                    <h2>Recent Uploads</h2>
-                </div>
-                <div class="col-12 text-center" onclick="libraryOpen()" style="padding:7vh; box-shadow: 5px 5px 5px grey;">
-                    <h2>Library</h2>
-                </div>
-                <div class="col-12 text-center" onclick="discussionOpen()" style="padding:7vh; box-shadow: 5px 5px 5px grey;">
-                    <h2>Discussion Forum</h2>
-                </div>
-            </div>
+            <h1>INSIDE THIS THE MAJOR CONTENT WHATEVER IS TO BE PUT</h1>
         </div>
 
-
-
-
-        <!-- The Recent Uploads Modal -->
-        <div class="modal fade" id="recentModal" data-backdrop="false">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <h4 class="modal-title">Recent Uploads</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-
-                    <!-- Modal body -->
-                    <div class="modal-body">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="list-group">
-                                        <a href="#" class="list-group-item list-group-item-action">First item</a>
-                                        <a href="#" class="list-group-item list-group-item-action">Second item</a>
-                                        <a href="#" class="list-group-item list-group-item-action">Third item</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    </div>
-
-                </div>
-            </div>
-        </div>
     </div>
 
     <div style="background-color:#304269; width:100%; bottom:0px; position:fixed">
@@ -189,14 +132,6 @@
                 animation: "collapse"
             }
         });
-
-        function libraryOpen() {
-            window.location = "library";
-        }
-
-        function discussionOpen() {
-            window.location = "discussion";
-        }
 
         $(".mm-navbar__title").html("Hello Monik");
     </script>
