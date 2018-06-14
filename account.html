@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Account settings</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/jquery.ccpicker.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style type="text/css">
+        /*The major colour component style definition : To be included in all html files*/
+        
+        body {
+            background-color: #d9e8f5;
+        }
+        
+        .yellow-text {
+            color: #ffba19;
+        }
+        
+        .lightblue-text {
+            color: #91bed4;
+        }
+        
+        .navyblue-bg {
+            background-color: #304269;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <div class="navyblue-bg">
+        <h2 style="margin-left: 0.5em; padding-top: 0.5em" class="yellow-text">Audiobook</h2>
+    </div>
+
+
+    <div style="margin-top: -1em; padding: 2em 0em 0.5em; text-align: center ; color : white;" class="container-fluid navyblue-bg">
+        <h5 style="text-align: center">ACCOUNT SETTINGS</h5>
+    </div>
+
+    <center style="margin-top: 2em">
+        <h4>Change Password</h4>
+    </center>
+    <hr>
+    <!-- Tab panes -->
+    <div class="tab-content">
+
+        <div id="change_password" class="container"><br>
+
+            <div style="margin-top: 2em">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <input type="password" id="old_password" class="form-control" placeholder="Enter Old Passowrd">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <input type="password" id="new_password" class="form-control" placeholder="Enter New Password">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <input type="password" id="confirm_password" class="form-control" placeholder="Confirm New Password">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <div class="form-group">
+                            <button type="button" id="change_pwd_btn" class="btn btn-info">Change Password</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+
+        <div id="registertab" class="container tab-pane fade"><br>
+
+            <center>
+                <h5><u>Sign Up using</u></h5>
+            </center>
+
+            <div class="row" style="margin-top: 1em">
+                <div class="col-3 offset-2">
+                    <button>Facebook</button>
+                </div>
+                <div class="col-3 offset-2">
+                    <button>Google</button>
+                </div>
+            </div>
+
+            <div class="clearfix" style="margin-top: 0.5em">
+                <div class="row">
+                    <div class="col-5">
+                        <hr style="border:solid; border-color: black;">
+                    </div>
+                    <div class="col-2">
+                        <h3>OR</h3>
+                    </div>
+                    <div class="col-5">
+                        <hr style="border:solid; border-color: black;">
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 0.5em">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <input type="text" id="register-name" class="phone-field form-control" placeholder="Enter Name">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <input type="number" id="register-phoneField" class="phone-field form-control" placeholder="Enter Mobile Number">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <input type="password" id="register-password" class="form-control" placeholder="Enter Password">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <input type="password" id="register-cnf-password" class="form-control" placeholder="Enter Password">
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:2em;">
+                    <div class="col-1">
+                        <div class="form-group">
+                            <button type="button" id="register-btn" class="btn btn-info" data-toggle="modal" data-target="#verificationModal">Proceed</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+    <!-- The OTP Verification Modal -->
+    <div class="modal fade" id="verificationModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Mobile Veification through OTP</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <h3>OTP (One Time Password) sent to Mobile Number</h3><br>
+                    <h5 id="otpmobilenumber">90xxxx0099</h5>
+                    <br>
+                    <br>
+                    <div class="row">
+                        <div class="col-7">
+                            <div class="form-group">
+                                <input type="number" id="otpnumber" class="form-control" placeholder="Enter OTP">
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <button type="button" id="resend-btn" class="btn btn-danger">Resend OTP</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
+                    <button type="button" class="btn btn-info" id="verification-btn">Verify</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div style="background-color:#304269; width:100%; bottom:0px; position:fixed">
+        <center><img src="img/footerw.png"></center>
+    </div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.ccpicker.min.js"></script>
+
+    <script type="text/javascript">
+        $("#signin-phoneField").CcPicker();
+
+        $("#signin-phoneField").CcPicker({
+            dataUrl: "data.json"
+        });
+
+        $("#register-phoneField").CcPicker();
+
+        $("#register-phoneField").CcPicker({
+            dataUrl: "data.json"
+        });
+    </script>
+</body>
+
+</html>
