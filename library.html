@@ -13,8 +13,10 @@
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/jquery.mmenu.all.css" rel="stylesheet">
     <link href="css/jquery.mhead.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
-    <link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
+    <link rel="stylesheet" href="css/reset.css">
+    <!-- CSS reset -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Resource style -->
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -22,7 +24,8 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script src="js/modernizr.js"></script> <!-- Modernizr -->
+    <script src="js/modernizr.js"></script>
+    <!-- Modernizr -->
 
 
     <style type="text/css">
@@ -55,6 +58,10 @@
         .mh-text {
             font-size: 2em;
         }
+        
+        .mm-navbar__title {
+            font-size: 16px !important;
+        }
     </style>
 </head>
 
@@ -66,7 +73,9 @@
             <span class="mh-btns-left">
                 <a class="fa fa-bars" style="color:#ffba19; font-size:40px" href="#menu"></a>
             </span>
-            <span class="mh-text yellow-text">Audiobook</span>
+            <div class="navyblue-bg text-center">
+                <img src="img/brandw.png" height="50vh">
+            </div>
         </div>
 
         <!-- <nav id="menu">
@@ -92,304 +101,305 @@
 
         <nav id="menu">
             <ul>
-                <li><a href="main">HOME</a></li>
-                <li><a href="library">LIBRARY</a></li>
-                <li><a href="discussion">DISCUSSION FORUM</a></li>
-                <li><a href="orders">ORDERS</a></li>
-                <li><a href="bookmark">BOOKMARK</a></li>
-                <li><a href="account">MY ACCOUNT</a></li>
-                <li><a href="about">ABOUT US</a></li>
-                <li><a href="contact">CONTACT US</a></li>
+                <li><a href="main" style="font-size:16px">HOME</a></li>
+                <li><a href="library" style="font-size:16px">LIBRARY</a></li>
+                <li><a href="bookmark" style="font-size:16px">BOOKMARK</a></li>
+                <li><a href="account" style="font-size:16px">MY ACCOUNT</a></li>
+                <li><a href="contact" style="font-size:16px">CONTACT US</a></li>
             </ul>
         </nav>
 
+        <h1>
+            <center style="color:#304269; margin-bottom:-1em; font-size:2em;"><u>Library</u></center>
+        </h1>
+
         <div class="container-fluid">
             <ul class="cd-accordion-menu animated">
-        <li class="has-children">
-            <input type="checkbox" name ="class-3" id="class-3">
-            <label for="class-3">class-3</label>
-
-            <ul>
                 <li class="has-children">
-                    <input type="checkbox" name ="odia" id="odia">
-                    <label for="odia">Odia</label>
+                    <input type="checkbox" name="class-3" id="class-3">
+                    <label for="class-3">class-3</label>
 
                     <ul>
-                        <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                        <li class="has-children">
+                            <input type="checkbox" name="odia" id="odia">
+                            <label for="odia">Odia</label>
+
+                            <ul>
+                                <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <input type="checkbox" name="english" id="english">
+                            <label for="english">English</label>
+
+                            <ul>
+                                <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <input type="checkbox" name="science" id="science">
+                            <label for="science">Science</label>
+
+                            <ul>
+                                <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <input type="checkbox" name="maths" id="maths">
+                            <label for="maths">Maths</label>
+
+                            <ul>
+                                <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
                 <li class="has-children">
-                    <input type="checkbox" name ="english" id="english">
-                    <label for="english">English</label>
+                    <input type="checkbox" name="class-4" id="class-4">
+                    <label for="class-4">class-4</label>
 
-                     <ul>
-                        <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                    <ul>
+                        <li class="has-children">
+                            <input type="checkbox" name="odia" id="odia">
+                            <label for="odia">Odia</label>
+
+                            <ul>
+                                <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <input type="checkbox" name="english" id="english">
+                            <label for="english">English</label>
+
+                            <ul>
+                                <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <input type="checkbox" name="science" id="science">
+                            <label for="science">Science</label>
+
+                            <ul>
+                                <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <input type="checkbox" name="maths" id="maths">
+                            <label for="maths">Maths</label>
+
+                            <ul>
+                                <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
                 <li class="has-children">
-                    <input type="checkbox" name ="science" id="science">
-                    <label for="science">Science</label>
+                    <input type="checkbox" name="class-5" id="class-5">
+                    <label for="class-5">class-5</label>
 
-                     <ul>
-                        <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                    <ul>
+                        <li class="has-children">
+                            <input type="checkbox" name="odia" id="odia">
+                            <label for="odia">Odia</label>
+
+                            <ul>
+                                <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <input type="checkbox" name="english" id="english">
+                            <label for="english">English</label>
+
+                            <ul>
+                                <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <input type="checkbox" name="science" id="science">
+                            <label for="science">Science</label>
+
+                            <ul>
+                                <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <input type="checkbox" name="maths" id="maths">
+                            <label for="maths">Maths</label>
+
+                            <ul>
+                                <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
                 <li class="has-children">
-                    <input type="checkbox" name ="maths" id="maths">
-                    <label for="maths">Maths</label>
+                    <input type="checkbox" name="class-6" id="class-6">
+                    <label for="class-6">class-6</label>
 
-                     <ul>
-                        <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                    <ul>
+                        <li class="has-children">
+                            <input type="checkbox" name="odia" id="odia">
+                            <label for="odia">Odia</label>
+
+                            <ul>
+                                <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <input type="checkbox" name="english" id="english">
+                            <label for="english">English</label>
+
+                            <ul>
+                                <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <input type="checkbox" name="science" id="science">
+                            <label for="science">Science</label>
+
+                            <ul>
+                                <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <input type="checkbox" name="maths" id="maths">
+                            <label for="maths">Maths</label>
+
+                            <ul>
+                                <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="has-children">
+                    <input type="checkbox" name="class-7" id="class-7">
+                    <label for="class-7">class-7</label>
+
+                    <ul>
+                        <li class="has-children">
+                            <input type="checkbox" name="odia" id="odia">
+                            <label for="odia">Odia</label>
+
+                            <ul>
+                                <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <input type="checkbox" name="english" id="english">
+                            <label for="english">English</label>
+
+                            <ul>
+                                <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <input type="checkbox" name="science" id="science">
+                            <label for="science">Science</label>
+
+                            <ul>
+                                <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <input type="checkbox" name="maths" id="maths">
+                            <label for="maths">Maths</label>
+
+                            <ul>
+                                <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="has-children">
+                    <input type="checkbox" name="class-8" id="class-8">
+                    <label for="class-8">class-8</label>
+
+                    <ul>
+                        <li class="has-children">
+                            <input type="checkbox" name="odia" id="odia">
+                            <label for="odia">Odia</label>
+
+                            <ul>
+                                <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <input type="checkbox" name="english" id="english">
+                            <label for="english">English</label>
+
+                            <ul>
+                                <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <input type="checkbox" name="science" id="science">
+                            <label for="science">Science</label>
+
+                            <ul>
+                                <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                            </ul>
+                        </li>
+                        <li class="has-children">
+                            <input type="checkbox" name="maths" id="maths">
+                            <label for="maths">Maths</label>
+
+                            <ul>
+                                <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                                <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
             </ul>
-        </li>
-                <li class="has-children">
-            <input type="checkbox" name ="class-4" id="class-4">
-            <label for="class-4">class-4</label>
-
-            <ul>
-                <li class="has-children">
-                    <input type="checkbox" name ="odia" id="odia">
-                    <label for="odia">Odia</label>
-
-                     <ul>
-                        <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                    </ul>
-                </li>
-                <li class="has-children">
-                    <input type="checkbox" name ="english" id="english">
-                    <label for="english">English</label>
-
-                     <ul>
-                        <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                    </ul>
-                </li>
-                <li class="has-children">
-                    <input type="checkbox" name ="science" id="science">
-                    <label for="science">Science</label>
-
-                     <ul>
-                        <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                    </ul>
-                </li>
-                <li class="has-children">
-                    <input type="checkbox" name ="maths" id="maths">
-                    <label for="maths">Maths</label>
-
-                     <ul>
-                        <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                    </ul>
-                </li>
-            </ul>
-        </li>        <li class="has-children">
-            <input type="checkbox" name ="class-5" id="class-5">
-            <label for="class-5">class-5</label>
-
-            <ul>
-                <li class="has-children">
-                    <input type="checkbox" name ="odia" id="odia">
-                    <label for="odia">Odia</label>
-
-                     <ul>
-                        <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                    </ul>
-                </li>
-                <li class="has-children">
-                    <input type="checkbox" name ="english" id="english">
-                    <label for="english">English</label>
-
-                     <ul>
-                        <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                    </ul>
-                </li>
-                <li class="has-children">
-                    <input type="checkbox" name ="science" id="science">
-                    <label for="science">Science</label>
-
-                     <ul>
-                        <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                    </ul>
-                </li>
-                <li class="has-children">
-                    <input type="checkbox" name ="maths" id="maths">
-                    <label for="maths">Maths</label>
-
-                     <ul>
-                        <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                    </ul>
-                </li>
-            </ul>
-        </li>        <li class="has-children">
-            <input type="checkbox" name ="class-6" id="class-6">
-            <label for="class-6">class-6</label>
-
-            <ul>
-                <li class="has-children">
-                    <input type="checkbox" name ="odia" id="odia">
-                    <label for="odia">Odia</label>
-
-                     <ul>
-                        <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                    </ul>
-                </li>
-                <li class="has-children">
-                    <input type="checkbox" name ="english" id="english">
-                    <label for="english">English</label>
-
-                     <ul>
-                        <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                    </ul>
-                </li>
-                <li class="has-children">
-                    <input type="checkbox" name ="science" id="science">
-                    <label for="science">Science</label>
-
-                     <ul>
-                        <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                    </ul>
-                </li>
-                <li class="has-children">
-                    <input type="checkbox" name ="maths" id="maths">
-                    <label for="maths">Maths</label>
-
-                     <ul>
-                        <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                    </ul>
-                </li>
-            </ul>
-        </li>        <li class="has-children">
-            <input type="checkbox" name ="class-7" id="class-7">
-            <label for="class-7">class-7</label>
-
-            <ul>
-                <li class="has-children">
-                    <input type="checkbox" name ="odia" id="odia">
-                    <label for="odia">Odia</label>
-
-                     <ul>
-                        <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                    </ul>
-                </li>
-                <li class="has-children">
-                    <input type="checkbox" name ="english" id="english">
-                    <label for="english">English</label>
-
-                     <ul>
-                        <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                    </ul>
-                </li>
-                <li class="has-children">
-                    <input type="checkbox" name ="science" id="science">
-                    <label for="science">Science</label>
-
-                     <ul>
-                        <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                    </ul>
-                </li>
-                <li class="has-children">
-                    <input type="checkbox" name ="maths" id="maths">
-                    <label for="maths">Maths</label>
-
-                     <ul>
-                        <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                    </ul>
-                </li>
-            </ul>
-        </li>        <li class="has-children">
-            <input type="checkbox" name ="class-8" id="class-8">
-            <label for="class-8">class-8</label>
-
-            <ul>
-                <li class="has-children">
-                    <input type="checkbox" name ="odia" id="odia">
-                    <label for="odia">Odia</label>
-
-                     <ul>
-                        <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                    </ul>
-                </li>
-                <li class="has-children">
-                    <input type="checkbox" name ="english" id="english">
-                    <label for="english">English</label>
-
-                     <ul>
-                        <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                    </ul>
-                </li>
-                <li class="has-children">
-                    <input type="checkbox" name ="science" id="science">
-                    <label for="science">Science</label>
-
-                     <ul>
-                        <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                    </ul>
-                </li>
-                <li class="has-children">
-                    <input type="checkbox" name ="maths" id="maths">
-                    <label for="maths">Maths</label>
-
-                     <ul>
-                        <li><label for="ch-1">Ch-1 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-2">Ch-2 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                        <li><label for="ch-3">Ch-3 <a href="#0" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-    </ul>
         </div>
 
-    </div>
-
-    <div style="background-color:#304269; width:100%; bottom:0px; position:fixed">
-        <center><img src="img/footerw.png"></center>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>My Account</title>
+    <title>Contact Us</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -59,6 +59,10 @@
         .modal-backdrop {
             z-index: 0 !important;
         }
+        
+        textarea {
+            resize: none;
+        }
     </style>
 </head>
 
@@ -108,47 +112,27 @@
 
         <div class="container-fluid">
             <h2>
-                <center>My Account</center>
+                <center>Contact Us</center>
                 <hr style="border:#304269 solid;">
             </h2>
             <div style="margin-top: 0.5em">
                 <div class="row">
                     <div class="col-12">
                         <div class="form-group">
-                            <input type="text" id="acc-name" class="phone-field form-control" placeholder="Change Name">
-                        </div>
-                    </div>
-                    <div class="col-12" style="margin-top:-1em;">
-                        <hr style="border: gray solid;">
-                    </div>
-                    <div class="col-12">
-                        <div class="form-group">
-                            <input type="number" id="acc-phoneField" class="phone-field form-control" placeholder="Change Mobile Number">
-                        </div>
-                    </div>
-                    <div class="col-12" style="margin-top:-1em;">
-                        <hr style="border: gray solid;">
-                    </div>
-                    <div class="col-12">
-                        <div class="form-group">
-                            <input type="password" id="acc-old-password" class="form-control" placeholder="Enter Old Password">
+                            <input type="text" id="contact-name" class="phone-field form-control" placeholder="Enter Name">
                         </div>
                     </div>
                     <div class="col-12">
+                        <span>Enter Message Body</span>
                         <div class="form-group">
-                            <input type="password" id="acc-new-password" class="form-control" placeholder="Enter New Password">
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="form-group">
-                            <input type="password" id="acc-cnf-password" class="form-control" placeholder="Re-Enter New Password">
+                            <textarea id="contact-msg" class="form-control" rows="10"></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="row" style="margin-bottom:2em;">
                     <div class="col-1">
                         <div class="form-group">
-                            <button type="button" id="acc-btn" class="btn btn-info" data-toggle="modal" data-target="#verificationModal">Proceed</button>
+                            <button type="button" id="contact-btn" class="btn btn-info">Proceed</button>
                         </div>
                     </div>
                 </div>
@@ -159,46 +143,6 @@
     </div>
 
 
-    <!-- The OTP Verification Modal -->
-    <div class="modal fade" id="verificationModal" style="z-index:99999999999999999999999">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Mobile Veification through OTP</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <h3>OTP (One Time Password) sent to Mobile Number</h3><br>
-                    <h5 id="otpmobilenumber">90xxxx0099</h5>
-                    <br>
-                    <br>
-                    <div class="row">
-                        <div class="col-7">
-                            <div class="form-group">
-                                <input type="number" id="otpnumber" class="form-control" placeholder="Enter OTP">
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="form-group">
-                                <button type="button" id="resend-btn" class="btn btn-danger">Resend OTP</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
-                    <button type="button" class="btn btn-info" id="verification-btn" data-background="false">Verify</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery-3.3.1.min.js"></script>
