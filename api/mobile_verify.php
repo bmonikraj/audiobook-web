@@ -2,27 +2,42 @@
 include "config.php"
 ?>
 <?php
-$ch = curl_init();
-
-curl_setopt($ch, CURLOPT_URL, 'https://api.nexmo.com/verify/json'.'/'.$_SESSION['request_id'].'/'.$_POST['code']);
-curl_setopt($ch, CURLOPT_HEADER, FALSE);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
-curl_setopt($ch, CURLOPT_HTTPHEADER,
-            array("API_KEY:d5541ab5",
-                  "API_SECRET:3OrdSiQEhhcVHVZe"));
-$response = curl_exec($ch);
-curl_close($ch); 
-
-echo $response;
-
-if($response->status==0)
+session_start();
+if(strcmp($_POST['otp'] , $_SESSION['otp'])==0)
 {
-    print '{"status":"success","message":"Correct pin entered "}';
-    //code for update row
+    print '{"status":"success","message":"Correct pin entered "'.$_SESSION['phone'].'}';
+    //update row
+    if(strcmp($_SESSION['new_phone'],"")==0)
+    {
+        $sql = "UPDATE userdata SET  mobile_verified = 1 WHERE mobile = '".$_SESSION['phone']."'";
+
+        if (mysqli_query($conn,$sql)) 
+                    {
+                    echo "<script>alert('!!! Updated Succesfully 1!!!')</script>";
+                    }           
+        else 
+                    {
+                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                    }
+    }
+    else
+    {
+        $sql = "UPDATE userdata SET  mobile = ".$_SESSION['new_phone']." WHERE mobile = '".$_SESSION['phone']."'";
+
+        if (mysqli_query($conn,$sql)) 
+                    {
+                    echo "<script>alert('!!! Updated Succesfully 2!!!')</script>";
+                    }           
+        else 
+                    {
+                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                    }
+    }
+    
 }
 else
 {
-	print '{"status":"error","message":"Invalid pin"}';
+    print '{"status":"error","message":"Invalid pin"}';
+    //delete the inserted data using session phone
 }
 ?>

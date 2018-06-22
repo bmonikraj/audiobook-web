@@ -15,8 +15,9 @@ $sql = "INSERT INTO userdata( name, pwd , mobile)VALUES ('".$name."','".$pwd."',
 
 		if (mysqli_query($conn,$sql)) 
 					{
-					echo "<script>alert('!!! Registered Succesfully !!!')</script>";
-							    	// header("location:signin.php");
+					// echo "<script>alert('!!! Registered Succesfully !!!')</script>";
+					
+									// header("location:signin.php");
 					}		 	
 		else 
 					{
@@ -27,28 +28,54 @@ $sql = "INSERT INTO userdata( name, pwd , mobile)VALUES ('".$name."','".$pwd."',
 
 
 //verifying the user
-$url = 'https://rest.nexmo.com/sms/json?' . http_build_query([
-	'api_key' =>'d5541ab5',
-	'api_secret' => '3OrdSiQEhhcVHVZe',
-	'to' => $phone,
-	'from' => 'audioweb',
-	'text' => 'Your otp '
-]);
+$otp = mt_rand(1001,9998);
+$_SESSION['otp'] = $otp;
 
-$ch = curl_init($url);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-$response = curl_exec($ch);
+$ch = curl_init();
 
-echo $response;
+curl_setopt($ch,  CURLOPT_URL ,"https://rest.nexmo.com/sms/json");
+curl_setopt($ch, CURLOPT_HEADER, FALSE);
+curl_setopt($ch,   CURLOPT_RETURNTRANSFER ,true);
+curl_setopt($ch,    CURLOPT_POST ,true);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+$data = array(
+        'api_key' =>'d5541ab5',
+		'api_secret' => '3OrdSiQEhhcVHVZe',
+		'to' => $phone,
+		'from' => 'audioweb',
+		'text' => 'Your OTP is '.$otp
+);
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+$result = curl_exec($ch);
 
-if($response->status==0)
+
+$var = json_encode($result);
+
+$v = json_decode($var,true);
+// print $v;
+
+if($result == false)
 {
-	print '{"status":"success","data":'.$response->request_id.'}';
-	$_SESSION['request_id'] = $response->request_id;
+	print "Curl Error ".curl_error($ch);
 }
+
 else
-if($response->status==3)
 {
-	print '{"status":"error","message":"Invalid phone num"}';
+	// if($response->status==0)
+	// {
+	// 	
+		
+	// }
+	// else
+	// if($response->status==34)
+	// {
+	// 	print '{"status":"error","message":"Invalid phone num"}';
+	// }
+	print '{"status":"success","message":"Success"}';
 }
+
+curl_close($ch);
+
+
+
 ?>
