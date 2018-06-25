@@ -35,7 +35,32 @@
 	</style>
 </head>
 <body>
+<script type="text/javascript">
+	$(document).ready(function(){
+	$.ajax({
+		type:"GET",
+		url:"http://localhost/audiobook-web/api/contact_read.php",
+		success:function(data){
+			display(JSON.parse(data))
 
+		},
+		error:function(data){
+			console.log(data);
+		}
+	});
+
+	function display(arr)
+	{
+		var temp = "";
+		for (var i = 0 ; i<arr.length ; i++)
+		{
+			temp = temp + '<div class="row box"><div class="col-md-11"><h3>EmailNo:<span>'+(i+1)+'</span> </h3>Submitted By: <span>'+arr[i].name+'</span><br/></h3><b><h3>'+arr[i].message+'</h3></b><br/></div></div>';
+		}
+		$(".msg").append(temp);
+	}
+	});
+
+</script>
 	<div class="row">
 		<div class="col-md-1" style="padding-top: 20px;padding-left: 20px">
 			<a href="" type="button" class="btn-warning btn-sm">Home</a>
@@ -48,16 +73,9 @@
 			<h2>|| EMAIL PANEL ||</h2>
         </div>
 	</div>
-	<div class="continer-fluid" >
+	<div class="continer-fluid msg" >
           		
-        <div class="row box">
-            <div class="col-md-11">
-                <h3>EmailNo:
-                <span>01</span>
-                </h3>Submitted By: <span>Name</span><br/></h3>
-                <b><h3>descrip</h3></b><br/>
-             </div>
-        </div>
+     
     </div>
     
       <!-- Modal content-->

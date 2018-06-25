@@ -3,7 +3,7 @@ include "config.php"
 ?>
 <?php
 session_start();
-
+// print $_SESSION['phone'];
 $sql = "SELECT * FROM userdata WHERE mobile = '".$_SESSION['phone']."'";
 $result = mysqli_query($conn,$sql);
 $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
@@ -33,11 +33,11 @@ if($_POST['name'])
 	$sql = "UPDATE userdata SET name = '".$_POST["name"]."' WHERE mobile = '".$_SESSION['phone']."'";
 	if (mysqli_query($conn,$sql)) 
 	{
-		echo "<script>alert('!!! Updated Succesfully !!!')</script>";
+		// echo "<script>alert('!!! Updated Succesfully !!!')</script>";
 	}		 	
 	else 
 	{
-		echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+		// echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 	}
 }
 
@@ -66,20 +66,20 @@ if($_POST['phone'])
 	
 	if($result == false)
 	{
-		print "Curl Error ".curl_error($ch);
+		// print "Curl Error ".curl_error($ch);
 	}
 
 	else
 	{
-		print '{"status":"success","message":"Success"}';
-		print $_SESSION['otp'];
+		// print '{"status":"success","message":"Success"}';
+		// print $_SESSION['otp'];
 	}
 
 	curl_close($ch);
 }
 else
 {
-	$_SESSION['new_phone'] = "";
+	$_SESSION['new_phone'] = NULL;
 }
 
 // if($response->status==0)
