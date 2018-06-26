@@ -7,11 +7,13 @@ session_start();
 $name = $_POST['name'];
 $phone = $_POST['phone'];
 $pwd = $_POST['pwd'];
+$email = $_POST['email'];
 
 $_SESSION['phone'] = $_POST['phone'];
+$_SESSION['new_phone'] = NULL;
 
 //inserting name and pass
-$sql = "INSERT INTO userdata( name, pwd , mobile)VALUES ('".$name."','".$pwd."','".$phone."')";
+$sql = "INSERT INTO userdata( name, pwd , mobile ,email)VALUES ('".$name."','".$pwd."','".$phone."','".$email."')";
 
 		if (mysqli_query($conn,$sql)) 
 					{
@@ -71,7 +73,8 @@ else
 	// {
 	// 	print '{"status":"error","message":"Invalid phone num"}';
 	// }
-	print '{"status":"success","message":"Success"}';
+	// print '{"status":"success","message":"Success"}';
+	print $result;
 }
 
 curl_close($ch);

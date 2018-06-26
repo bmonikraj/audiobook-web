@@ -9,10 +9,16 @@
     <title>Contact Us</title>
 
     <!-- Bootstrap -->
+    <script src="js/jquery-3.3.1.min.js"></script>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/jquery.mmenu.all.css" rel="stylesheet">
     <link href="css/jquery.mhead.css" rel="stylesheet">
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.mmenu.all.js"></script>
+    <script src="js/jquery.mhead.js"></script>
+    
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -142,7 +148,7 @@
                 <div class="row" style="margin-bottom:2em;">
                     <div class="col-1">
                         <div class="form-group">
-                            <button type="button" id="contact-btn" class="btn btn-info">Proceed</button>
+                            <button type="button" id="contact-btn" class="contact-btn btn btn-info">Proceed</button>
                         </div>
                     </div>
                 </div>
@@ -150,17 +156,32 @@
 
         </div>
 
+        <script type="text/javascript">
+            $(document).on("click",".contact-btn",function(){
+                $.ajax({
+                    type:"POST",
+                    url:"http://localhost/audiobook-web/api/contact_create.php",
+                    data:{
+                        name:$("#contact-name").val().toString(),
+                        message:$("#contact-msg").val().toString()
+                    },
+                    success: function(data){
+                        console.log(data);
+                        alert("Submitted");
+                    },
+                    error: function(data){
+                        console.log(data);
+                    }
+                });
+            });
+        </script>
+
     </div>
 
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.mmenu.all.js"></script>
-    <script src="js/jquery.mhead.js"></script>
-
+   
     <script type="text/javascript">
         //  create a menu
         $('#menu').mmenu();

@@ -5,15 +5,16 @@ include "config.php"
 session_start();
 if(strcmp($_POST['otp'] , $_SESSION['otp'])==0)
 {
-    print '{"status":"success","message":"Correct pin entered "'.$_SESSION['phone'].'}';
+    print '{"status":"success","message":"Correct pin entered "}';
     //update row
-    if(strcmp($_SESSION['new_phone'],"")==0)
+    if($_SESSION['new_phone'])
     {
-        $sql = "UPDATE userdata SET  mobile_verified = 1 WHERE mobile = '".$_SESSION['phone']."'";
+
+         $sql = "UPDATE userdata SET  mobile = ".$_SESSION['new_phone']." WHERE mobile = '".$_SESSION['phone']."'";
 
         if (mysqli_query($conn,$sql)) 
                     {
-                    echo "<script>alert('!!! Updated Succesfully 1!!!')</script>";
+                    // echo "<script>alert('!!! Updated Succesfully 2!!!')</script>";
                     }           
         else 
                     {
@@ -22,16 +23,17 @@ if(strcmp($_POST['otp'] , $_SESSION['otp'])==0)
     }
     else
     {
-        $sql = "UPDATE userdata SET  mobile = ".$_SESSION['new_phone']." WHERE mobile = '".$_SESSION['phone']."'";
+        $sql = "UPDATE userdata SET  mobile_verified = 1 WHERE mobile = '".$_SESSION['phone']."'";
 
         if (mysqli_query($conn,$sql)) 
                     {
-                    echo "<script>alert('!!! Updated Succesfully 2!!!')</script>";
+                    // echo "<script>alert('!!! Updated Succesfully 1!!!')</script>";
                     }           
         else 
                     {
                     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                     }
+       
     }
     
 }
