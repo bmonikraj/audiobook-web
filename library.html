@@ -175,7 +175,7 @@
                                                                                 var dataArr3 = data.data;
                                                                                 for(var l=0; l<dataArr3.length; l++)
                                                                                 {
-                                                                                    var str3 = '<li><label for="ch-1">Ch-'+dataArr3[l]["chapter"]+' - '+dataArr3[l]["name"]+' <a href="library-storage/'++'" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>';
+                                                                                    var str3 = '<li><label for="ch-1">Ch-'+dataArr3[l]["chapter"]+' - '+dataArr3[l]["name"]+' <a href="library-storage/'+dataArr3[l]["lid"]+"."+dataArr3[l]["file_ext"]+'" download="'+dataArr3[l]["name"]+'" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>';
                                                                                 }
                                                                             }
                                                                         }
