@@ -4,8 +4,8 @@
 <?php
 	if(isset($_POST['class']))
 	{
-		$class = $_POST['class'];
-		$sql2 = 'SELECT DISTINCT subject FROM librarydata WHERE class='.$class;
+		$class = mysqli_real_escape_string($conn, $_POST['class']);
+		$sql2 = 'SELECT DISTINCT subject FROM librarydata WHERE class="'.$class.'"';
 		$result2 = mysqli_query($conn, $sql2);
 		if($result2)
 		{
@@ -16,6 +16,7 @@
 			}
 			$retn2 = array(
 				'status' => 'success',
+				'class' => $class,
 				'data' => $res2
 			);
 		}
