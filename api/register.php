@@ -8,10 +8,13 @@ $name = $_POST['name'];
 $phone = $_POST['phone'];
 $pwd = $_POST['pwd'];
 $email = $_POST['email'];
+$flag = intval($_POST['flag']);
 
 $_SESSION['phone'] = $_POST['phone'];
 $_SESSION['new_phone'] = NULL;
 
+if($flag == 1)
+{
 //inserting name and pass
 $sql = "INSERT INTO userdata( name, pwd , mobile ,email)VALUES ('".$name."','".$pwd."','".$phone."','".$email."')";
 
@@ -28,10 +31,11 @@ $sql = "INSERT INTO userdata( name, pwd , mobile ,email)VALUES ('".$name."','".$
 				    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 					}								
 
-
+}
 //verifying the user
 $otp = mt_rand(1001,9998);
 $_SESSION['otp'] = $otp;
+$_SESSION['expire'] = time() + 300;
 
 $ch = curl_init();
 

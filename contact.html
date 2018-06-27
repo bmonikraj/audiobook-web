@@ -18,7 +18,8 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.mmenu.all.js"></script>
     <script src="js/jquery.mhead.js"></script>
-    
+    <script src="js/sweetalert.min.js"></script>
+
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -33,19 +34,19 @@
 
     <style type="text/css">
         /*The major colour component style definition : To be included in all html files*/
-        
+
         body {
             background-color: #d9e8f5;
         }
-        
+
         .yellow-text {
             color: #ffba19;
         }
-        
+
         .lightblue-text {
             color: #91bed4;
         }
-        
+
         .navyblue-bg {
             background-color: #304269;
         }
@@ -57,15 +58,15 @@
             height: 6em;
             padding: 1.5em;
         }
-        
+
         .mh-text {
             font-size: 2em;
         }
-        
+
         .modal-backdrop {
             z-index: 0 !important;
         }
-        
+
         textarea {
             resize: none;
         }
@@ -108,11 +109,21 @@
 
         <nav id="menu">
             <ul>
-                <li><a href="main">HOME</a></li>
-                <li><a href="library">LIBRARY</a></li>
-                <li><a href="bookmark">BOOKMARK</a></li>
-                <li><a href="account">MY ACCOUNT</a></li>
-                <li><a href="contact">CONTACT US</a></li>
+                <li>
+                    <a href="main">HOME</a>
+                </li>
+                <li>
+                    <a href="library">LIBRARY</a>
+                </li>
+                <li>
+                    <a href="bookmark">BOOKMARK</a>
+                </li>
+                <li>
+                    <a href="account">MY ACCOUNT</a>
+                </li>
+                <li>
+                    <a href="contact">CONTACT US</a>
+                </li>
             </ul>
         </nav>
 
@@ -147,19 +158,18 @@
         </div>
 
         <script type="text/javascript">
-            $(document).on("click",".contact-btn",function(){
+            $(document).on("click", ".contact-btn", function () {
                 $.ajax({
-                    type:"POST",
-                    url:"http://localhost/audiobook-web/api/contact_create.php",
-                    data:{
-                        name:$("#contact-name").val().toString(),
-                        message:$("#contact-msg").val().toString()
+                    type: "POST",
+                    url: "http://localhost/audiobook-web/api/contact_create.php",
+                    data: {
+                        name: $("#contact-name").val().toString(),
+                        message: $("#contact-msg").val().toString()
                     },
-                    success: function(data){
-                        console.log(data);
-                        alert("Submitted");
+                    success: function (data) {
+                        swal("Your message submitted", ":)", "success");
                     },
-                    error: function(data){
+                    error: function (data) {
                         console.log(data);
                     }
                 });
@@ -171,7 +181,7 @@
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-   
+
     <script type="text/javascript">
         //  create a menu
         $('#menu').mmenu();

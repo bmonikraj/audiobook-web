@@ -46,6 +46,7 @@ if($_POST['phone'])
 	$otp = mt_rand(1001,9998);
 	$_SESSION['otp'] = $otp;
 	$_SESSION['new_phone'] = $_POST['phone'];
+	$_SESSION['expire'] = time() + 300;
 	$ch = curl_init();
 
 	curl_setopt($ch, CURLOPT_URL ,"https://rest.nexmo.com/sms/json");

@@ -11,11 +11,12 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
-     <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <link href="css/jquery.mmenu.all.css" rel="stylesheet">
     <link href="css/jquery.mhead.css" rel="stylesheet">
+    <script src="js/sweetalert.min.js"></script>
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -30,19 +31,19 @@
 
     <style type="text/css">
         /*The major colour component style definition : To be included in all html files*/
-        
+
         body {
             background-color: #d9e8f5;
         }
-        
+
         .yellow-text {
             color: #ffba19;
         }
-        
+
         .lightblue-text {
             color: #91bed4;
         }
-        
+
         .navyblue-bg {
             background-color: #304269;
         }
@@ -54,11 +55,11 @@
             height: 6em;
             padding: 1.5em;
         }
-        
+
         .mh-text {
             font-size: 2em;
         }
-        
+
         .modal-backdrop {
             z-index: 0 !important;
         }
@@ -101,11 +102,19 @@
 
         <nav id="menu">
             <ul>
-                <li><a href="main">HOME</a></li>
-                <li><a href="library">LIBRARY</a></li>
-                <li><a href="bookmark">BOOKMARK</a></li>
-                <li><a href="account">MY ACCOUNT</a></li>
-                <li><a href="contact">CONTACT US</a></li>
+                <li>
+                    <a href="main.html">HOME</a>
+                </li>
+                <li>
+                    <a href="library.html">LIBRARY</a>
+                </li>
+                <!-- <li><a href="bookmark">BOOKMARK</a></li> -->
+                <li>
+                    <a href="Javascript:void(0)">MY ACCOUNT</a>
+                </li>
+                <li>
+                    <a href="contact.html">CONTACT US</a>
+                </li>
             </ul>
         </nav>
 
@@ -175,7 +184,8 @@
 
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <h3>OTP (One Time Password) sent to Mobile Number</h3><br>
+                    <h3>OTP (One Time Password) sent to Mobile Number</h3>
+                    <br>
                     <h5 id="otpmobilenumber">90xxxx0099</h5>
                     <br>
                     <br>
@@ -187,7 +197,7 @@
                         </div>
                         <div class="col-3">
                             <div class="form-group">
-                                <button type="button" id="resend-btn" class="btn btn-danger">Resend OTP</button>
+                                <button type="button" id="resend-btn" class="resend-btn btn btn-danger">Resend OTP</button>
                             </div>
                         </div>
                     </div>
@@ -204,107 +214,186 @@
     </div>
 
     <script type="text/javascript">
-    
 
-        $(document).on("click",".acc-btn" , function(){
-            
-             $flag = 1;
 
-             if(!$("#acc-name").val().toString())
-             {
+        $(document).on("click", ".acc-btn", function () {
+
+            $flag = 1;
+
+            if (!$("#acc-name").val().toString()) {
                 $name = null;
-             }
-             else
-             {
-                 $name = $("#acc-name").val().toString();
-             }
+            }
+            else {
+                $name = $("#acc-name").val().toString();
+                swal("Name Updated", ":)", "success");
 
-
-             if(!$("#acc-phone").val().toString())
-             {
-                $phone = null;
-             }
-             else
-             {
-                 $phone = $("#acc-phone").val().toString();   
-             }
-
-              if(!$("#acc-old-password").val().toString())
-             {
-                $old_pwd = null;
-             }
-             else
-             {
-               $old_pwd = $("#acc-old-password").val().toString(); 
-             }
-
-             if(!$("#acc-new-password").val().toString())
-             {
-                $new_pwd = null;
-                $cnf_pwd= null;
-             }
-             else
-             {
-                 $new_pwd = $("#acc-new-password").val().toString(); 
-                 $cnf_pwd = $("#acc-cnf-password").val().toString();
-
-                 if($("#acc-new-password").val().localeCompare($("#acc-cnf-password").val())!=0)
-                 {
-                    alert("Confirm New Password... Two password donot match");
-                    $flag = 0;
-                 }
-                 else
-                {
-                    $flag = 1;
-                }
-             }
-            
-            if($flag==1)
-            {
-        
-                    $.ajax({
-                        type:"POST",
-                        url:"http://localhost/audiobook-web/api/update_info.php",
-                        data:{
-                            name:$name,
-                            phone:$phone,
-                            old_pwd:$old_pwd,
-                            new_pwd:$new_pwd
-                        },
-                        success:function(data){
-                            alert("entered");
-                            console.log(data);
-                        },
-                        error:function(data){
-                            console.log(data);
-                        }
-                    }); 
             }
 
-            
-        });
 
-         //otp verification
-        $(document).on("click",".verification-btn",function(){
-            alert("HHHHHHHHH");
-            console.log($("#otpnumber").val());
+            if (!$("#acc-phone").val().toString()) {
+                $phone = null;
+            }
+            else {
+                $phone = $("#acc-phone").val().toString();
+            }
 
-            $.ajax({
-                type:"POST",
-                url:"http://localhost/audiobook-web/api/mobile_verify.php",
-                data:{
-                    otp:$("#otpnumber").val().toString()
-                },
-                success: function (data) {
+            if ($("#acc-old-password").val().toString()) {
+                if (!$("#acc-new-password").val().toString() || !$("#acc-cnf-password").val().toString()) {
+                    swal("Enter New Passwords", ":(", "warning");
+                }
+            }
+            if (!$("#acc-new-password").val().toString() || !$("#acc-cnf-password").val().toString() || !$("#acc-old-password").val().toString()) {
+                $old_pwd = null;
+                $new_pwd = null;
+                $cnf_pwd = null;
+            }
+            else {
+                $old_pwd = $("#acc-old-password").val().toString();
+                $new_pwd = $("#acc-new-password").val().toString();
+                $cnf_pwd = $("#acc-cnf-password").val().toString();
+
+                if ($("#acc-new-password").val().localeCompare($("#acc-cnf-password").val()) != 0) {
+                    swal("Confirm New Password... Two password donot match", ":(", "warning");
+                    $flag = 0;
+                }
+                else {
+                    $flag = 1;
+                }
+            }
+
+            if ($flag == 1) {
+
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost/audiobook-web/api/update_info.php",
+                    data: {
+                        name: $name,
+                        phone: $phone,
+                        old_pwd: $old_pwd,
+                        new_pwd: $new_pwd
+                    },
+                    success: function (data) {
+                        console.log(data);
                         var dta = JSON.parse(data);
-                        if(dta.status.localeCompare("success")==0)
-                        {
-                            alert("Updated Successfully");
+                        if (dta.status.localeCompare("error") == 0) {
+                            swal("Invalid old password", ":(", "warning");
+                        }
+                        else {
+                            swal("Password updated", ":)", "success");
                         }
                     },
-                error: function (data) {
+                    error: function (data) {
                         console.log(data);
                     }
+                });
+            }
+
+
+        });
+
+        //resend otp
+        $(document).on("click", ".resend-btn", function () {
+
+            $flag = 1;
+
+            if (!$("#acc-name").val().toString()) {
+                $name = null;
+            }
+            else {
+                $name = $("#acc-name").val().toString();
+            }
+
+
+            if (!$("#acc-phone").val().toString()) {
+                $phone = null;
+            }
+            else {
+                $phone = $("#acc-phone").val().toString();
+            }
+
+            if ($("#acc-old-password").val().toString()) {
+                if (!$("#acc-new-password").val().toString() || !$("#acc-cnf-password").val().toString()) {
+                    swal("Enter New Passwords", ":(", "warning");
+                }
+            }
+
+            if (!$("#acc-new-password").val().toString() || !$("#acc-cnf-password").val().toString() || !$("#acc-old-password").val().toString()) {
+                $old_pwd = null;
+                $new_pwd = null;
+                $cnf_pwd = null;
+            }
+            else {
+                $old_pwd = $("#acc-old-password").val().toString();
+                $new_pwd = $("#acc-new-password").val().toString();
+                $cnf_pwd = $("#acc-cnf-password").val().toString();
+
+                if ($("#acc-new-password").val().localeCompare($("#acc-cnf-password").val()) != 0) {
+                    swal("Confirm New Password... Two password donot match", ":(", "warning");
+                    $flag = 0;
+                }
+                else {
+                    $flag = 1;
+                }
+            }
+
+            if ($flag == 1) {
+
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost/audiobook-web/api/update_info.php",
+                    data: {
+                        name: $name,
+                        phone: $phone,
+                        old_pwd: $old_pwd,
+                        new_pwd: $new_pwd
+                    },
+                    success: function (data) {
+                        var dta = JSON.parse(data);
+                        if (dta.status.localeCompare("error") == 0) {
+                            swal("Invalid old password", ":(", "warning");
+                        }
+                        else {
+                            swal("Password updated", ":)", "success");
+                        }
+                    },
+                    error: function (data) {
+                        console.log(data);
+                    }
+                });
+            }
+
+
+        });
+
+        //otp verification
+        $(document).on("click", ".verification-btn", function () {
+            alert("HHHHHHHHH");
+            console.log($("#otpnumber").val());
+            $.ajax({
+                type: "POST",
+                url: "http://localhost/audiobook-web/api/mobile_verify.php",
+                data: {
+                    otp: $("#otpnumber").val().toString()
+                },
+                success: function (data) {
+                    console.log(data);
+                    var dta = JSON.parse(data);
+                    if (dta.status.localeCompare("timeout") == 0) {
+                        swal("OTP session timed out", ":|", "warning");
+                    }
+                    else
+                        if (dta.status.localeCompare("success") == 0) {
+                            swal("Updated successfully", ":)", "success");
+                            location.reload(true);
+                        }
+                        else
+                            if (dta.status.localeCompare("error") == 0) {
+                                swal("Invalid OTP", ":|", "error");
+                            }
+                },
+                error: function (data) {
+                    // console.log(data);
+                }
             });
 
         });
