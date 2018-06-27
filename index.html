@@ -16,6 +16,7 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js "></script>
     <script src="js/jquery.ccpicker.min.js "></script>
+    <script src="js/sweetalert.min.js"></script>
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -134,26 +135,30 @@
         </div>
 
         <script type="text/javascript">
-        $(document).on("click",".signin-btn" , function(){
-            alert("JJJll");
+            $(document).on("click", ".signin-btn", function () {
                 $.ajax({
-                    type:"POST",
-                    url:"http://localhost/audiobook-web/api/login.php",
-                    data:{
-                        mobile:$("#signin-phone").val().toString(),
-                        pwd:$("#signin-pwd").val().toString(),
+                    type: "POST",
+                    url: "http://localhost/audiobook-web/api/login.php",
+                    data: {
+                        mobile: $("#signin-phone").val().toString(),
+                        pwd: $("#signin-pwd").val().toString(),
                     },
-                    success:function(data){
-                        alert("LOgged in");
-                        console.log(data);
+                    success: function (data) {
+                        console.log();
+                        var dta = JSON.parse(data);
+                        if (dta.status.localeCompare("success") == 0) {
+                            window.location.href = "http://localhost/audiobook-web/main.html";
+                        }
+                        else {
+                            swal("Invalid Credentials", ":|", "error");
+                        }
                     },
-                    error:function(data){
-                        alert("BBB");
-                        console.log(data);
+                    error: function (data) {
+
                     }
                 });
-        });
-    </script>
+            });
+        </script>
 
 
         <div id="registertab" class="container tab-pane fade">
@@ -219,7 +224,7 @@
                 <div class="row " style="margin-bottom:2em; ">
                     <div class="col-1 ">
                         <div class="form-group">
-                <button type="button" id="#register-btn" class="register-btn btn btn-info" data-toggle="modal" data-target="#verificationModal">Proceed</button>
+                            <button type="button" id="#register-btn" class="register-btn btn btn-info" data-toggle="modal" data-target="#verificationModal">Proceed</button>
                         </div>
                     </div>
                 </div>
@@ -230,7 +235,7 @@
     </div>
 
     <!-- *********************************************Register*************************** -->
-    
+
 
 
     <!-- The OTP Verification Modal -->
@@ -259,7 +264,7 @@
                         </div>
                         <div class="col-3">
                             <div class="form-group">
-                                <button type="button" id="resend-btn" class="btn btn-danger ">Resend OTP</button>
+                                <button type="button" id="resend-btn" class="resend-btn btn btn-danger ">Resend OTP</button>
                             </div>
                         </div>
                     </div>
@@ -286,15 +291,16 @@
                         name: $("#register-name").val().toString(),
                         phone: $("#register-phone").val().toString(),
                         pwd: $("#register-password").val().toString(),
-                        email: $("#register-email").val().toString()
+                        email: $("#register-email").val().toString(),
+                        flag: "1"
                     },
                     success: function (data) {
-                        var data_obj=JSON.parse(data);
-                        if((data_obj.messages)[0].status.localeCompare("29")==0)
-                        {
-                            alert("Invalid Phone Number");
+                        console.log(data);
+                        var data_obj = JSON.parse(data);
+                        if ((data_obj.messages)[0].status.localeCompare("29") == 0) {
+                            swal("Invalid Phone Number", ":|", "error");
                             location.reload(true);
-                          
+
                         }
 
                     },
@@ -304,37 +310,77 @@
                 });
             }
             else {
-                alert("Two password donot match");
+                swal("Two Passwords Do not match", ":|", "error");
             }
         });
 
-        //otp verification
-        $(document).on("click",".verification-btn",function(){
-            alert("HHHHHHHHH");
-            console.log($("#otpnumber").val());
+        //resend otp
+        $(document).on("click", ".resend-btn", function () {
 
+            if ($("#register-password").val().localeCompare($("#register-cnf-password").val()) == 0) {
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost/audiobook-web/api/register.php",
+                    data: {
+                        name: $("#register-name").val().toString(),
+                        phone: $("#register-phone").val().toString(),
+                        pwd: $("#register-password").val().toString(),
+                        email: $("#register-email").val().toString(),
+                        flag: "0"
+                    },
+                    success: function (data) {
+                        var data_obj = JSON.parse(data);
+                        if ((data_obj.messages)[0].status.localeCompare("29") == 0) {
+                            swal("Invalid Phone Number", ":|", "error");
+                            location.reload(true);
+
+                        }
+                        else {
+                            // alert("Success");
+                        }
+
+                    },
+                    error: function (data) {
+                        // console.log(JSON.parse(data));
+                    }
+                });
+            }
+            else {
+                swal("Two Passwords Do not match", ":|", "error");
+            }
+        });
+        //otp verification
+        $(document).on("click", ".verification-btn", function () {
             $.ajax({
-                type:"POST",
-                url:"http://localhost/audiobook-web/api/mobile_verify.php",
-                data:{
-                    otp:$("#otpnumber").val().toString()
+                type: "POST",
+                url: "http://localhost/audiobook-web/api/mobile_verify.php",
+                data: {
+                    otp: $("#otpnumber").val().toString()
                 },
                 success: function (data) {
-                        var dta = JSON.parse(data);
-                        if(dta.status.localeCompare("success")==0)
-                        {
-                            alert("Registered Successfully");
-                        }
-                    },
-                error: function (data) {
-                        console.log(data);
+                    var dta = JSON.parse(data);
+                    if (dta.status.localeCompare("timeout") == 0) {
+                        swal("OTP session timed out", ":|", "warning");
                     }
+                    else
+                        if (dta.status.localeCompare("success") == 0) {
+                            swal("Registered successfully", ":)", "success");
+                            location.reload(true);
+                        }
+                        else
+                            if (dta.status.localeCompare("error") == 0) {
+                                swal("Invalid OTP", ":|", "error");
+                            }
+                },
+                error: function (data) {
+                    // console.log(data);
+                }
             });
 
         });
 
     </script>
-    
+
     <script type="text/javascript ">
         $("#signin-phoneField ").CcPicker();
 
