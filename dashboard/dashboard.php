@@ -40,10 +40,10 @@ if(isset($_POST["submit"]))
 		$uploadOk = 1;
 
 		// Allow certain file formats
-		// if($doc_ext != 'wav' && $doc_ext !='mp3') {
-		//     echo "<script>alert('Sorry, only .wav or .mp3 audio files are allowed !!!');</script>";
-		//     $uploadOk = 0;
-		// }
+		if($doc_ext != 'wav' && $doc_ext !='mp3') {
+		    echo "<script>alert('Sorry, only .wav or .mp3 audio files are allowed !!!');</script>";
+		    $uploadOk = 0;
+		}
 		// Check if $uploadOk is set to 0 by an error
 				$sql1="SELECT * FROM librarydata ORDER BY lid DESC LIMIT 1";
 				$result1=mysqli_query($conn,$sql1);
