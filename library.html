@@ -32,23 +32,23 @@
 
     <style type="text/css">
         /*The major colour component style definition : To be included in all html files*/
-        
+
         body {
             background-color: #d9e8f5;
         }
-        
+
         .yellow-text {
             color: #ffba19;
         }
-        
+
         .lightblue-text {
             color: #91bed4;
         }
-        
+
         .navyblue-bg {
             background-color: #304269;
         }
-        
+
         @font-face {
             font-family: "Uncial";
             src: url('fonts/UncialAntiqua-Regular.ttf');
@@ -61,11 +61,11 @@
             height: 6em;
             padding: 1.5em;
         }
-        
+
         .mh-text {
             font-size: 2em;
         }
-        
+
         .mm-navbar__title {
             font-size: 16px !important;
         }
@@ -108,87 +108,89 @@
 
         <nav id="menu">
             <ul>
-                <li><a href="main" style="font-size:16px">HOME</a></li>
-                <li><a href="library" style="font-size:16px">LIBRARY</a></li>
-                <li><a href="bookmark" style="font-size:16px">BOOKMARK</a></li>
-                <li><a href="account" style="font-size:16px">MY ACCOUNT</a></li>
-                <li><a href="contact" style="font-size:16px">CONTACT US</a></li>
+                <li>
+                    <a href="main.html" style="font-size:16px">HOME</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" style="font-size:16px">LIBRARY</a>
+                </li>
+                <!-- <li><a href="bookmark" style="font-size:16px">BOOKMARK</a></li> -->
+                <li>
+                    <a href="account.html" style="font-size:16px">MY ACCOUNT</a>
+                </li>
+                <li>
+                    <a href="contact.html" style="font-size:16px">CONTACT US</a>
+                </li>
             </ul>
         </nav>
 
         <h1>
-            <center style="color:#304269; margin-bottom:-1em; font-size:2em;"><u>Library</u></center>
+            <center style="color:#304269; margin-bottom:-1em; font-size:2em;">
+                <u>Library</u>
+            </center>
         </h1>
 
         <div class="container-fluid">
             <script type="text/javascript">
-                $(document).ready(function(){
+                $(document).ready(function () {
                     $.ajax({
-                        type : "GET",
-                        url : "api/class_read.php",
-                        success : function(data, status){
+                        type: "GET",
+                        url: "api/class_read.php",
+                        success: function (data, status) {
                             var cls = JSON.parse(data);
-                            if(cls["status"] == 'success')
-                            {
+                            if (cls["status"] == 'success') {
                                 var dataArr = cls['data'];
-                                for(var i=0; i<dataArr.length; i++)
-                                {
-                                    var str = '<li class="has-children"><input type="checkbox" name="'+dataArr[i]+'" id="'+dataArr[i]+'"><label for="'+dataArr[i]+'">'+dataArr[i]+'</label><ul class="'+dataArr[i].replace(/\s+/g, '')+'"></ul></li>';
+                                for (var i = 0; i < dataArr.length; i++) {
+                                    var str = '<li class="has-children"><input type="checkbox" name="' + dataArr[i] + '" id="' + dataArr[i] + '"><label for="' + dataArr[i] + '">' + dataArr[i] + '</label><ul class="' + dataArr[i].replace(/\s+/g, '') + '"></ul></li>';
                                     $(".cd-accordion-menu").append(str);
                                     $.ajax({
-                                        type : "POST", 
-                                        url : "api/subject_read.php",
-                                        data : {
-                                            class : dataArr[i]
-                                        }, 
-                                        success : function(data, status){
+                                        type: "POST",
+                                        url: "api/subject_read.php",
+                                        data: {
+                                            class: dataArr[i]
+                                        },
+                                        success: function (data, status) {
                                             var sub = JSON.parse(data);
-                                            if(sub["status"] == "success")
-                                            {
+                                            if (sub["status"] == "success") {
                                                 var dataArr1 = sub['data'];
                                                 var selector = sub['class'];
-                                                for(var j=0; j<dataArr1.length; j++)
-                                                {
-                                                    var str2 = '<li class="has-children"><input type="checkbox" name="'+selector.replace(/\s+/g, '')+dataArr1[j].replace(/\s+/g, '')+'" id="'+selector.replace(/\s+/g, '')+dataArr1[j].replace(/\s+/g, '')+'"><label for="'+selector.replace(/\s+/g, '')+dataArr1[j].replace(/\s+/g, '')+'">'+dataArr1[j]+'</label><ul class="'+selector.replace(/\s+/g, '')+dataArr1[j].replace(/\s+/g, '')+'"></ul></li>';
-                                                    $("."+selector.replace(/\s+/g, '')).append(str2);
+                                                for (var j = 0; j < dataArr1.length; j++) {
+                                                    var str2 = '<li class="has-children"><input type="checkbox" name="' + selector.replace(/\s+/g, '') + dataArr1[j].replace(/\s+/g, '') + '" id="' + selector.replace(/\s+/g, '') + dataArr1[j].replace(/\s+/g, '') + '"><label for="' + selector.replace(/\s+/g, '') + dataArr1[j].replace(/\s+/g, '') + '">' + dataArr1[j] + '</label><ul class="' + selector.replace(/\s+/g, '') + dataArr1[j].replace(/\s+/g, '') + '"></ul></li>';
+                                                    $("." + selector.replace(/\s+/g, '')).append(str2);
                                                     $.ajax({
-                                                        type : "POST", 
-                                                        url : "api/course_read.php",
-                                                        data : {
-                                                            class : selector,
-                                                            subject : dataArr1[j]
-                                                        }, 
-                                                        success : function(data, status){
+                                                        type: "POST",
+                                                        url: "api/course_read.php",
+                                                        data: {
+                                                            class: selector,
+                                                            subject: dataArr1[j]
+                                                        },
+                                                        success: function (data, status) {
                                                             var crs = JSON.parse(data);
-                                                            if(crs['status'] == "success")
-                                                            {
+                                                            if (crs['status'] == "success") {
                                                                 var dataArr2 = crs['data'];
                                                                 var selector1 = crs['class'];
                                                                 var selector2 = crs['subject'];
-                                                                for(var k=0; k<dataArr2.length; k++)
-                                                                {
-                                                                    var str3 = '<li class="has-children"><input type="checkbox" name="'+selector1.replace(/\s+/g, '')+selector2.replace(/\s+/g, '')+dataArr2[k].replace(/\s+/g, '')+'" id="'+selector1.replace(/\s+/g, '')+selector2.replace(/\s+/g, '')+dataArr2[k].replace(/\s+/g, '')+'"><label for="'+selector1.replace(/\s+/g, '')+selector2.replace(/\s+/g, '')+dataArr2[k].replace(/\s+/g, '')+'">'+dataArr2[k]+'</label><ul class="'+selector1.replace(/\s+/g, '')+selector2.replace(/\s+/g, '')+dataArr2[k].replace(/\s+/g, '')+'"></ul></li>';
-                                                                    $("."+selector1.replace(/\s+/g, '')+selector2.replace(/\s+/g, '')).append(str3);
-                                                                     $.ajax({
-                                                                        type : "POST", 
-                                                                        url : "api/chapter_read.php",
-                                                                        data : {
-                                                                            class : selector1,
-                                                                            subject : selector2,
-                                                                            course : dataArr2[k]
-                                                                        }, 
-                                                                        success : function(data, status){
+                                                                for (var k = 0; k < dataArr2.length; k++) {
+                                                                    var str3 = '<li class="has-children"><input type="checkbox" name="' + selector1.replace(/\s+/g, '') + selector2.replace(/\s+/g, '') + dataArr2[k].replace(/\s+/g, '') + '" id="' + selector1.replace(/\s+/g, '') + selector2.replace(/\s+/g, '') + dataArr2[k].replace(/\s+/g, '') + '"><label for="' + selector1.replace(/\s+/g, '') + selector2.replace(/\s+/g, '') + dataArr2[k].replace(/\s+/g, '') + '">' + dataArr2[k] + '</label><ul class="' + selector1.replace(/\s+/g, '') + selector2.replace(/\s+/g, '') + dataArr2[k].replace(/\s+/g, '') + '"></ul></li>';
+                                                                    $("." + selector1.replace(/\s+/g, '') + selector2.replace(/\s+/g, '')).append(str3);
+                                                                    $.ajax({
+                                                                        type: "POST",
+                                                                        url: "api/chapter_read.php",
+                                                                        data: {
+                                                                            class: selector1,
+                                                                            subject: selector2,
+                                                                            course: dataArr2[k]
+                                                                        },
+                                                                        success: function (data, status) {
                                                                             var chpt = JSON.parse(data);
-                                                                            if(chpt['status'] == "success")
-                                                                            {
+                                                                            if (chpt['status'] == "success") {
                                                                                 var dataArr3 = chpt['data'];
                                                                                 var selector3 = chpt['class'].replace(/\s+/g, '');
                                                                                 var selector4 = chpt['subject'].replace(/\s+/g, '');
                                                                                 var selector5 = (chpt['course']).replace(/\s+/g, '');
-                                                                                for(var l=0; l<dataArr3.length; l++)
-                                                                                {
-                                                                                    var str4 = '<li><label for="ch-1">Ch-'+dataArr3[l]["chapter"]+' - '+dataArr3[l]["name"]+' <a href="library-storage/'+dataArr3[l]["lid"]+"."+dataArr3[l]["file_ext"]+'" download="'+dataArr3[l]["name"]+'" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>';
-                                                                                    $("."+selector3+selector4+selector5).append(str4);
+                                                                                for (var l = 0; l < dataArr3.length; l++) {
+                                                                                    var str4 = '<li><label for="ch-1">Ch-' + dataArr3[l]["chapter"] + ' - ' + dataArr3[l]["name"] + ' <a href="library-storage/' + dataArr3[l]["lid"] + "." + dataArr3[l]["file_ext"] + '" download="' + dataArr3[l]["name"] + '" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>';
+                                                                                    $("." + selector3 + selector4 + selector5).append(str4);
                                                                                 }
                                                                             }
                                                                         }
