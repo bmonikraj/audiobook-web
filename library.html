@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="css/reset.css">
     <!-- CSS reset -->
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery-2.1.4.js"></script>
+    <script src="js/main.js"></script>
     <!-- Resource style -->
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -123,59 +125,70 @@
                 $(document).ready(function(){
                     $.ajax({
                         type : "GET",
-                        url : "api/class-read.php",
+                        url : "api/class_read.php",
                         success : function(data, status){
-                            if(data.status == 'success')
+                            var cls = JSON.parse(data);
+                            if(cls["status"] == 'success')
                             {
-                                var dataArr = data.data;
+                                var dataArr = cls['data'];
                                 for(var i=0; i<dataArr.length; i++)
                                 {
-                                    var str = '<li class="has-children"><input type="checkbox" name="'+dataArr[i]+'" id="'+dataArr[i]+'"><label for="'+dataArr[i]+'">'+dataArr[i]+'</label><ul class="'+dataArr[i]+'"></ul></li>';
+                                    var str = '<li class="has-children"><input type="checkbox" name="'+dataArr[i]+'" id="'+dataArr[i]+'"><label for="'+dataArr[i]+'">'+dataArr[i]+'</label><ul class="'+dataArr[i].replace(/\s+/g, '')+'"></ul></li>';
                                     $(".cd-accordion-menu").append(str);
                                     $.ajax({
                                         type : "POST", 
-                                        url : "api/subject-read.php",
+                                        url : "api/subject_read.php",
                                         data : {
                                             class : dataArr[i]
                                         }, 
                                         success : function(data, status){
-                                            if(data.status == "success")
+                                            var sub = JSON.parse(data);
+                                            if(sub["status"] == "success")
                                             {
-                                                var dataArr1 = data.data;
+                                                var dataArr1 = sub['data'];
+                                                var selector = sub['class'];
                                                 for(var j=0; j<dataArr1.length; j++)
                                                 {
-                                                    var str2 = '<li class="has-children"><input type="checkbox" name="'+dataArr1[j]+'" id="'+dataArr1[j]+'"><label for="'+dataArr1[j]+'">'+dataArr1[j]+'</label><ul class="'+dataArr[i]+dataArr1[j]+'"></ul></li>';
-                                                    $("."+dataArr[i]).append(str2);
+                                                    var str2 = '<li class="has-children"><input type="checkbox" name="'+selector.replace(/\s+/g, '')+dataArr1[j].replace(/\s+/g, '')+'" id="'+selector.replace(/\s+/g, '')+dataArr1[j].replace(/\s+/g, '')+'"><label for="'+selector.replace(/\s+/g, '')+dataArr1[j].replace(/\s+/g, '')+'">'+dataArr1[j]+'</label><ul class="'+selector.replace(/\s+/g, '')+dataArr1[j].replace(/\s+/g, '')+'"></ul></li>';
+                                                    $("."+selector.replace(/\s+/g, '')).append(str2);
                                                     $.ajax({
                                                         type : "POST", 
-                                                        url : "api/course-read.php",
+                                                        url : "api/course_read.php",
                                                         data : {
-                                                            class : dataArr[i],
+                                                            class : selector,
                                                             subject : dataArr1[j]
                                                         }, 
                                                         success : function(data, status){
-                                                            if(data.status == "success")
+                                                            var crs = JSON.parse(data);
+                                                            if(crs['status'] == "success")
                                                             {
-                                                                var dataArr2 = data.data;
+                                                                var dataArr2 = crs['data'];
+                                                                var selector1 = crs['class'];
+                                                                var selector2 = crs['subject'];
                                                                 for(var k=0; k<dataArr2.length; k++)
                                                                 {
-                                                                    var str2 = '<li class="has-children"><input type="checkbox" name="'+dataArr2[k]+'" id="'+dataArr2[k]+'"><label for="'+dataArr2[k]+'">'+dataArr2[k]+'</label><ul class="'+dataArr[i]+dataArr1[j]+dataArr2[k]+'"></ul></li>';
-                                                                    $("."+dataArr[i]+dataArr1[j]).append(str3);
+                                                                    var str3 = '<li class="has-children"><input type="checkbox" name="'+selector1.replace(/\s+/g, '')+selector2.replace(/\s+/g, '')+dataArr2[k].replace(/\s+/g, '')+'" id="'+selector1.replace(/\s+/g, '')+selector2.replace(/\s+/g, '')+dataArr2[k].replace(/\s+/g, '')+'"><label for="'+selector1.replace(/\s+/g, '')+selector2.replace(/\s+/g, '')+dataArr2[k].replace(/\s+/g, '')+'">'+dataArr2[k]+'</label><ul class="'+selector1.replace(/\s+/g, '')+selector2.replace(/\s+/g, '')+dataArr2[k].replace(/\s+/g, '')+'"></ul></li>';
+                                                                    $("."+selector1.replace(/\s+/g, '')+selector2.replace(/\s+/g, '')).append(str3);
                                                                      $.ajax({
                                                                         type : "POST", 
-                                                                        url : "api/chapter-read.php",
+                                                                        url : "api/chapter_read.php",
                                                                         data : {
-                                                                            class : dataArr[i],
-                                                                            subject : dataArr1[j],
+                                                                            class : selector1,
+                                                                            subject : selector2,
                                                                             course : dataArr2[k]
                                                                         }, 
                                                                         success : function(data, status){
-                                                                            if(data.status == "success")
+                                                                            var chpt = JSON.parse(data);
+                                                                            if(chpt['status'] == "success")
                                                                             {
-                                                                                var dataArr3 = data.data;
+                                                                                var dataArr3 = chpt['data'];
+                                                                                var selector3 = chpt['class'].replace(/\s+/g, '');
+                                                                                var selector4 = chpt['subject'].replace(/\s+/g, '');
+                                                                                var selector5 = (chpt['course']).replace(/\s+/g, '');
                                                                                 for(var l=0; l<dataArr3.length; l++)
                                                                                 {
-                                                                                    var str3 = '<li><label for="ch-1">Ch-'+dataArr3[l]["chapter"]+' - '+dataArr3[l]["name"]+' <a href="library-storage/'+dataArr3[l]["lid"]+"."+dataArr3[l]["file_ext"]+'" download="'+dataArr3[l]["name"]+'" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>';
+                                                                                    var str4 = '<li><label for="ch-1">Ch-'+dataArr3[l]["chapter"]+' - '+dataArr3[l]["name"]+' <a href="library-storage/'+dataArr3[l]["lid"]+"."+dataArr3[l]["file_ext"]+'" download="'+dataArr3[l]["name"]+'" style="display: inline;">Download <span class="fa fa-download"></span></a></label></li>';
+                                                                                    $("."+selector3+selector4+selector5).append(str4);
                                                                                 }
                                                                             }
                                                                         }
@@ -195,7 +208,7 @@
                 });
             </script>
             <ul class="cd-accordion-menu animated">
-                <li class="has-children">
+                <!-- <li class="has-children">
                     <input type="checkbox" name="class-3" id="class-3">
                     <label for="class-3">class-3</label>
 
@@ -476,7 +489,7 @@
                             </ul>
                         </li>
                     </ul>
-                </li>
+                </li> -->
             </ul>
         </div>
 
@@ -508,8 +521,6 @@
 
         $(".mm-navbar__title").html("Hello Monik");
     </script>
-    <script src="js/jquery-2.1.4.js"></script>
-    <script src="js/main.js"></script>
 </body>
 
 </html>

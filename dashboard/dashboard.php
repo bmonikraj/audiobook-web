@@ -8,6 +8,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="js/alertify.min.js"></script>
+
+	<link rel="stylesheet" href="css/alertify.min.css" />
+	<link rel="stylesheet" href="css/themes/default.min.css" />
+	<script src="js/jquery-2.1.4.js"></script>
 
 	<title>DASHBOARD</title>
 </head>
@@ -20,7 +25,7 @@ if(isset($_POST["submit"]))
 	$course=mysqli_real_escape_string($conn,$_POST['crs']);
 	$chapter=mysqli_real_escape_string($conn,$_POST['chpt']);
 	$doc_ext=pathinfo(basename($_FILES["doc"]["name"]), PATHINFO_EXTENSION);
-	$sql="INSERT INTO librarydata(name, class, subject, course, chapter) VALUES('".$name."','".$class."','".$subject."','".$course."','".$chapter."')";
+	$sql="INSERT INTO librarydata(name, class, subject, course, chapter, file_ext) VALUES('".$name."','".$class."','".$subject."','".$course."','".$chapter."','".$doc_ext."')";
 	if(mysqli_query($conn,$sql))
 	{
 		
@@ -60,7 +65,7 @@ if(isset($_POST["submit"]))
 
 		   else {
 
-		        echo "<script>alert('Sorry, there was an error uploading your file.;</script>";
+		        echo "<script>alert('Sorry, there was an error uploading your file);</script>";
 		        $sql2="DELETE FROM librarydata WHERE lid=".$row1["lid"];
 		   		$result2=mysqli_query($conn,$sql2);
 		    }

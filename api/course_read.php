@@ -4,9 +4,9 @@
 <?php
 	if(isset($_POST['class']) && isset($_POST['subject']))
 	{
-		$class = $_POST['class'];
-		$subject = $_POST['subject'];
-		$sql3 = "SELECT DISTINCT course FROM librarydata WHERE class=".$class." AND subject=".$subject;
+		$class = mysqli_real_escape_string($conn, $_POST['class']);
+		$subject = mysqli_real_escape_string($conn, $_POST['subject']);
+		$sql3 = "SELECT DISTINCT course FROM librarydata WHERE class='".$class."' AND subject='".$subject."'";
 		$result3 = mysqli_query($conn, $sql3);
 		if($result3)
 		{
@@ -17,6 +17,8 @@
 			}
 			$retn3 = array(
 				'status' => 'success',
+				'class' => $class,
+				'subject' => $subject,
 				'data' => $res3
 			);
 		}
